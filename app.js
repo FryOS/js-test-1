@@ -1,16 +1,12 @@
 
-const balance = 1001;
-const bonusBalance = 101;
-const isBanned = false;
-const isExist = false;
-const isSelling = true;
+function toPower(num, power) {
+    const res = num ** power;
+    return res;
+}
 
-const isCan = (balance > 1000 || bonusBalance > 100) && !isBanned && !isExist && isSelling;
-console.log( `${isCan ? "Yes" : "No"}`);
+console.log(toPower(2,3));
 
-console.log(true && "PS");
+const toPowerArrow = (num, power) => res = num ** power;    
+    
 
-console.log(  "PS" && true);
-
-console.log('12' ?? 'Yes')
-
+console.log(toPowerArrow(2,3));
