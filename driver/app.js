@@ -1,9 +1,12 @@
-console.log("hello world");
-
 const hasLicence = true;
 const age = 20;
-const isDrunk = false;
+const isDrunk = true;
 
-
-const isCan = hasLicence && (age >= 18) && !isDrunk ;
-console.log( `${isCan ? "Может вести машину" : "Не Может вести машину"}`);
+const isCanDrive = hasLicence && age >= 18 && !isDrunk;
+console.log(
+  `${
+    isCanDrive
+      ? "Водитель может вести машину"
+      : "Водитель не может вести машину"
+  }`
+);
