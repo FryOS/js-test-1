@@ -15,7 +15,6 @@ if (answer) {
       break;
     default:
       alert("Что-то вы ввели не то");
-      break;
   }
 } else {
   alert("Вы не ввели язык. Пустая строчка");
