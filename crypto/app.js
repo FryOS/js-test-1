@@ -1,5 +1,3 @@
-console.log("hello world");
-
 function encrypt(password) {
   return password.split("").reverse().join("");
 }
@@ -14,7 +12,7 @@ function check(encryptedPassword, password) {
 
 const password = 'password';
 const encryptedPassword = encrypt(password);
-console.log(encryptedPassword); // ssapdrow
+console.log(encryptedPassword); // drowssap
 
 console.log(check(encryptedPassword, password)); // true
 console.log(check(encryptedPassword, 'wrongpassword')); // false
