@@ -1,26 +1,18 @@
 console.log("HOF");
 
-function filter(arr, removeItem){
+const isRemovedItem = number => number >= 5 ? true : false;
+
+function filter(arr, removeFn){
     const filterArray = [];
     for (let i = 0; i < arr.length; i++) {
         const element = arr[i];
-        if(removeItem(element)){
+        if(removeFn(element)){
             filterArray.push(element);
         }        
     }
-
     return filterArray;
 }
 
-
-function removeItem(number){
-    if(number >= 5){
-        return true;
-    }
-    else{
-        return false;
-    }
-}
 const arr = [1,5,8,3,9];
-const filterarr = filter(arr, removeItem)
-console.log(filterarr);
+const filterArr = filter(arr, isRemovedItem)
+console.log(`Отфильтрованный массив: ${filterArr}`);
