@@ -2,7 +2,7 @@ console.log("loop started");
 
 const arr = [1, 40, -5, 10, 0];
 
-function sortarr(arr) {
+function sortArr(arr) {
   for (let i = 0; i < arr.length - 1; i++) {
     for (let j = 0; j < arr.length - i - 1; j++) {
       if (arr[j] > arr[j + 1]) {
@@ -13,5 +13,5 @@ function sortarr(arr) {
   }
 }
 
-sortarr(arr);
+sortArr(arr);
 console.log(arr); //[ -5, 0, 1, 10, 40 ]
