@@ -1,9 +1,13 @@
 function encrypt(password) {
-  return password.split("").reverse().join("");
+  const left =  password.split("").reverse().join("").slice(0,4);
+  const right =  password.split("").reverse().join("").slice(4,password.length);
+  return [right, left ].join("");
 }
 
 function decrypt(password) {
-  return password.split("").reverse().join("");
+  const left =  password.split("").reverse().join("").slice(0,4);
+  const right =  password.split("").reverse().join("").slice(4,password.length);
+  return [left, right].join("");
 }
 
 function check(encryptedPassword, password) {
