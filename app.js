@@ -1,16 +1,7 @@
+const prices = [[100,200], [120,100],[200,350]];
 
-const balance = 1001;
-const bonusBalance = 101;
-const isBanned = false;
-const isExist = false;
-const isSelling = true;
+const positiveChanges = prices
+  .map(([x, y]) => y - x) // Получаем массив изменений цен
+  .filter(change => change > 0); // Оставляем только положительные изменения
 
-const isCan = (balance > 1000 || bonusBalance > 100) && !isBanned && !isExist && isSelling;
-console.log( `${isCan ? "Yes" : "No"}`);
-
-console.log(true && "PS");
-
-console.log(  "PS" && true);
-
-console.log('12' ?? 'Yes')
-
+console.log(positiveChanges); // [100, 150]
