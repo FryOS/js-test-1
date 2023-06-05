@@ -11,7 +11,6 @@ function isValidCardNumber(cardNumber) {
   let sum = 0;
   for (let i = carNumberWithoutDashes.length - 1; i >= 0; i--) {
     const digit = Number(carNumberWithoutDashes[i]);
-    console.log(digit);
     if (i % 2 === 0) {
       const doubleDigit = digit * 2;
       sum += doubleDigit > 9 ? doubleDigit - 9 : doubleDigit;
