@@ -44,10 +44,12 @@ const paper = {
   color: "red",
 };
 
-warehouse.addGoodById(23);
-//warehouse.addGoodById(chair);
-//warehouse.addGoodById(paper);
-const finded = warehouse.findGoodById(chair);
-console.log(finded);
-const weight = warehouse.getWeightKg();
-console.log(weight);
+// warehouse.addGoodById(23);
+// warehouse.addGoodById(chair);
+// warehouse.addGoodById(paper);
+// const finded = warehouse.findGoodById(chair);
+// console.log(finded);
+// const weight = warehouse.getWeightKg();
+// console.log(weight);
+
+
