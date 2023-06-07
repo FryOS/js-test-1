@@ -1,7 +1,6 @@
 function filterDates(arr) {
   return arr
-    .filter((str) => {
-      
+    .filter((str) => {      
       let swapDate = transformDateStringToArray(str);
       if (!isValidDate(swapDate)) {
         return;
@@ -12,9 +11,7 @@ function filterDates(arr) {
         // проверяем количество элементов в массиве
         return false;
       }
-      // if (str.includes("/")) {
-      //   return swapMonthAndDay(str);
-      // }
+      
       const day = parseInt(parts[0]);
       const month = parseInt(parts[1]);
       const year = parseInt(parts[2]);
@@ -40,7 +37,6 @@ function filterDates(arr) {
     })
     .map((str) => str.replace(/\//g, "-")); // заменяем все вхождения "/" на "-"
 }
-
 
 function isValidDate(dateString) { 
   
