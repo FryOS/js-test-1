@@ -1,5 +1,7 @@
-function getQuery(query, callback) {
-  return `search=${query?.search}&take=${query?.take}`;
+function getQuery(query) {
+  return Object.keys(query)
+    .map((key) => `${key}=${query[key]}`)
+    .join("&");
 }
 
 const query = {
