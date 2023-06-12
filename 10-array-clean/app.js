@@ -1,12 +1,12 @@
 console.log("HOF");
 
-const isRemovedItem = number => number >= 5 ? true : false;
+const isRemovedItem = number => number < 5 ? true : false;
 
-function filter(arr, removeFn){
+function filter(arr, filterFn){
     const filterArray = [];
     for (let i = 0; i < arr.length; i++) {
         const element = arr[i];
-        if(removeFn(element)){
+        if(filterFn(element)){
             filterArray.push(element);
         }        
     }
