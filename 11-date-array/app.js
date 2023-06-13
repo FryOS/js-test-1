@@ -30,7 +30,7 @@ function filterDates(arr) {
         // проверяем корректность значений
         return false;
       }
-      const formattedDate = `${day < 10 ? "0" : ""}${day}-${
+      const formattedDate = `${day < 10 ? "0" : ""}${month}-${
         month < 10 ? "0" : ""
       }${month}-${year}`; // форматируем дату в нужный вид
       return formattedDate;
@@ -40,12 +40,10 @@ function filterDates(arr) {
 
 function isValidDate(dateString) { 
   
-  // Проверяем формат даты и конвертируем её в объект Date
-  const dateRegex = /^(\d{1,2})(\/|-)(\d{1,2})\2(\d{2}|\d{4})$/;
-  if (!dateRegex.test(dateString)) {
-    return false; // Некорректный формат даты
+  if(dateString == null){
+    return;
   }
-  const [_, day, __, month, year] = dateString.match(dateRegex);
+  let [day, month, year] = dateString.split(/[./-]/);
 
   const dateObject = new Date(year, +month - 1, day);
 
@@ -57,6 +55,8 @@ function isValidDate(dateString) {
   ).getDate();
   return +day <= daysInMonth;
 }
+
+
 
 function transformDateStringToArray(dateString) {
   let [month, day, year] = dateString.split('/');
