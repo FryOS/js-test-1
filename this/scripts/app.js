@@ -1,58 +1,70 @@
-function removePass(reset) {
-  if (reset) {
-    this.password = undefined;
-  } else {
-    this.password = "1";
+"use strict";
+
+let habbits = [];
+const HABBIT_KEY = "HABBIT_KEY";
+
+/*page*/ 
+const page = {
+  menu: document.querySelector(".menu__list"),
+}
+
+/*utils*/
+
+function loadDta(){
+  const habbitString = localStorage.getItem(HABBIT_KEY);
+  const habbitArray = JSON.parse(habbitString);
+  if(Array.isArray(habbitArray)){
+    habbits = habbitArray;
   }
 }
 
-const user = {
-  password: "password",
-  login: "login",
-};
-
-removePass.call(user, true);
-
-console.log(user);
-
-const userInfo = {
-  balance: "password",
-  operations: "login",
-  increase(sum) {
-    this.balance += sum;
-    this.operations++;
-  },
-};
-
-("use strict");
-const userInfo2 = {
-  balance: 0,
-  operations: 0,
-  increase(sum) {
-    this.balance += sum;
-    this.operations++;
-  },
-};
-
-function Ui() {
-  const user = {
-    balance: 0,
-    operations: 0,
-    increase(sum) {
-      this.balance += sum;
-      this.operations++;
-    },
-  };
-
-  return function () {
-    return user;
-  };
+function saveDAta(){
+  localStorage.setItem(HABBIT_KEY, JSON.stringify(habbits));
 }
 
-const user3 = Ui();
-const tt = user3().increase(3)
-console.log(user3());
+/*render*/
+function rerenderMenu(activeHabbit){
+  if(!activeHabbit){
+    return;
+  }
+  for(const habbit of habbits){
+    const existed = document.querySelector(`[menu-habbit-id="${habbit.id}"]`);
+    if(!existed){
+      //создание
+      const element = document.createElement('button');
+      element.setAttribute("menu-habbit-id", habbit.id);
+      element.classList.add("menu__item");
+      element.addEventListener("click", (e) => rerender(habbit.id))
+      element.innerHTML = `<img src="images/${habbit.icon}.svg" alt="${habbit.name}" >`;
+      
+      if(activeHabbit.id === habbit.id){
+        element.classList.add("menu__item_active");
+      }
 
-const user4 = Ui();
-const tttt = user4().increase(100)
-console.log(user4());
+      page.menu.appendChild(element);
+      continue;
+    }
+    if(activeHabbit.id === habbit.id){
+      existed.classList.add("menu__item_active");
+    }else{
+      existed.classList.remove("menu__item_active")
+    }
+    
+    
+
+  }
+
+}
+
+function rerender(activeHabbitId){
+  const activeHabbit = habbits.find(habbit => habbit.id === activeHabbitId)
+  rerenderMenu(activeHabbit);
+}
+
+
+/*init*/
+(() => {
+  loadDta();
+  rerender(habbits[0].id)
+})();
+
