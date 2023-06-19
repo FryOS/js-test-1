@@ -31,3 +31,37 @@ function plus() {
   const resPlus = Number(+num1 + +num2);
   document.querySelector("#result").setAttribute("value", resPlus.toString());
 }
+
+function clear() {
+  document.querySelector("#firstNumber").value = "";
+  document.querySelector("#secondNumber").value = "";
+  document.querySelector("#result").value = "";
+  
+}
+
+function delegateClick(event) {
+  if (event.target && event.target.nodeName === 'INPUT') {
+    const action = event.target.getAttribute('data-action');
+    switch (action) {
+      case 'multiplyBy':
+        multiplyBy();
+        break;
+      case 'divideBy':
+        divideBy();
+        break;
+      case 'minus':
+        minus();
+        break;
+      case 'plus':
+        plus();
+        break;
+        case 'clear':
+        clear();
+        break;
+      default:
+        break;
+    }
+  }
+}
+
+document.addEventListener('click', delegateClick);
