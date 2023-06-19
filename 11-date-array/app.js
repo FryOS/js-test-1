@@ -1,88 +1,64 @@
 function filterDates(arr) {
-  return arr
-    .filter((str) => {      
-      let swapDate = transformDateStringToArray(str);
-      if (!isValidDate(swapDate)) {
-        return;
-      }      
-      
-      const parts = swapDate.split(/[./-]/); // разбиваем строку на массив частей по разделителям даты: "-", "/" или "."
-      if (parts.length !== 3) {
-        // проверяем количество элементов в массиве
-        return false;
-      }
-      
-      const day = parseInt(parts[0]);
-      const month = parseInt(parts[1]);
-      const year = parseInt(parts[2]);
-      if (isNaN(day) || isNaN(month) || isNaN(year)) {
-        // проверяем, что все три части даты являются числами
-        return false;
-      }
-      if (
-        day < 1 ||
-        day > 31 ||
-        month < 1 ||
-        month > 12 ||
-        year < 1000 ||
-        year > 9999
-      ) {
-        // проверяем корректность значений
-        return false;
-      }
-      const formattedDate = `${day < 10 ? "0" : ""}${month}-${
-        month < 10 ? "0" : ""
-      }${month}-${year}`; // форматируем дату в нужный вид
-      return formattedDate;
-    })
-    .map((str) => str.replace(/\//g, "-")); // заменяем все вхождения "/" на "-"
+  const filteredData = []
+  arr.forEach((date) => {
+    const swapedDate = transformDateStringToArray(date);
+    if (isValidDate(swapedDate)) {
+        const [day, month, year] = swapedDate.split('-')
+        const formattedDate = `${day < 10 ? "0" : ""}${Number(day)}-${
+            month < 10 ? "0" : ""
+        }${Number(month)}-${Number(year)}`
+        filteredData.push(formattedDate);
+    }
+  })
+  return filteredData;
 }
 
-function isValidDate(dateString) { 
-  
-  if(dateString == null){
-    return;
-  }
-  let [day, month, year] = dateString.split(/[./-]/);
+function isValidDate(dateString) {
+if(dateString == null){
+  return false;
+}
+let [day, month, year] = dateString.split('-');
 
-  const dateObject = new Date(year, +month - 1, day);
-
-  // Проверяем количество дней в месяце
-  const daysInMonth = new Date(
-    dateObject.getFullYear(),
-    dateObject.getMonth(),
-    0
-  ).getDate();
-  return +day <= daysInMonth;
+if (isNaN(day) || isNaN(month) || isNaN(year)) {
+    return false;
 }
 
-
+const date = new Date().setFullYear(Number(year), Number(month - 1), Number(day));
+const dateObject = new Date(date)
+const checkedDay = dateObject.getDate();
+const checkedMonth = dateObject.getMonth() + 1;
+const checkedYear = dateObject.getFullYear();
+return Number(day) === checkedDay && Number(month) === checkedMonth && Number(year) === checkedYear;
+}
 
 function transformDateStringToArray(dateString) {
-  let [month, day, year] = dateString.split('/');
+let [month, day, year] = dateString.split('/');
 
-  if (!year) {
-      [day, month, year] = dateString.split('-');
-  }
-
-  if (!year) {
-      return null
-  }
-
-  return [day, month, year].join('-');
+if (!year) {
+    [day, month, year] = dateString.split('-');
 }
 
+if (!year || year.length < 4) {
+    return null
+}
 
-console.log("Проверка даты");
+return [day, month, year].join('-');
+}
+
 const stringArr = [
-  "10-02-2022",
-  "тест",
-  "11/12/2023",
-  "00/13/2023",
-  "31-04-2023",
-  "04/31/2023",
-  "31/31/2023",
+"10-02-2022",
+"тест",
+"11/12/2023",
+"00/13/2023",
+"3/1-04-2023",
+"04/31/2023",
+"31/31/2023",
+"1/1/1",
+"29-02-2023",
+"02/29/2023",
+"29-02-2024",
+"02/29/2024"
 ];
-const filteredArr = filterDates(stringArr);
-console.log(filteredArr); // ["10-02-2022", "11-12-2023"]
 
+const filteredArr = filterDates(stringArr);
+console.log(filteredArr);
