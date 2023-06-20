@@ -1,9 +1,14 @@
+const container = document.querySelector('.container');
+const res = document.querySelector("#result");
+container.addEventListener('click', delegateClick, false);
+
+
 function multiplyBy() {
   const num1 = document.getElementById("firstNumber").value;
   const num2 = document.getElementById("secondNumber").value;
 
   const resMult = Number(+num1 * +num2);
-  document.querySelector("#result").setAttribute("value", resMult.toString());
+  res.setAttribute("value", resMult.toString());
 }
 
 function divideBy() {
@@ -42,7 +47,7 @@ function clear() {
 function delegateClick(event) {
   if (event.target && event.target.nodeName === 'INPUT') {
     const action = event.target.getAttribute('data-action');
-    switch (action) {
+    switch (action) {      
       case 'multiplyBy':
         multiplyBy();
         break;
@@ -64,4 +69,4 @@ function delegateClick(event) {
   }
 }
 
-document.addEventListener('click', delegateClick);
+
