@@ -20,27 +20,27 @@ function divideBy() {
   }
   const resDiv = Number(+num1 / +num2);
 
-  document.querySelector("#result").setAttribute("value", resDiv.toString());
+  res.setAttribute("value", resDiv.toString());
 }
 
 function minus() {
   const num1 = document.getElementById("firstNumber").value;
   const num2 = document.getElementById("secondNumber").value;
   const resMinus = Number(+num1 - +num2);
-  document.querySelector("#result").setAttribute("value", resMinus.toString());
+  res.setAttribute("value", resMinus.toString());
 }
 
 function plus() {
   const num1 = document.getElementById("firstNumber").value;
   const num2 = document.getElementById("secondNumber").value;
   const resPlus = Number(+num1 + +num2);
-  document.querySelector("#result").setAttribute("value", resPlus.toString());
+  res.setAttribute("value", resPlus.toString());
 }
 
 function clear() {
   document.querySelector("#firstNumber").value = "";
   document.querySelector("#secondNumber").value = "";
-  document.querySelector("#result").value = "";
+  res.value = "";
   
 }
 
