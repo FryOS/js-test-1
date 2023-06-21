@@ -121,7 +121,8 @@ h1 {
   background: #5051f9;
   border-radius: 4px;
   height: 5px;
-  width: 50%;
+  /* width: 50%; */
+  transition: all 1s;
 }
 
 .habbit {
@@ -174,6 +175,10 @@ input {
 
 input::placeholder {
   color: #8899a8;
+}
+
+input.error{
+  border: 1px solid red;
 }
 
 input.error {
