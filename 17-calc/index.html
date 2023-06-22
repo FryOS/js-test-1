@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>   
+</head>
+
+<body>
+    <div class="container">
+        <h1>Calc</h1>
+        1st Number : <input type="text" id="firstNumber" value="" /><br>
+        2nd Number : <input type="text" id="secondNumber" value="" /><br>
+        <div class="section-button">
+            <input type="button" data-action="multiplyBy" value="multiply" />
+            <input type="button" data-action="divideBy" value="divide" />
+            <input type="button" data-action="minus" value="minus" />
+            <input type="button" data-action="plus" value="plus" />
+            <br>
+            Result:
+            <input type="text" value="" id="result" />
+        </div>
+        <div class="clear">
+            <input type="button" data-action="clear" value="All clear" id="clear" />
+        </div>
+    </div>
+    <script src="./app.js"></script>
+</body>
+</html>
