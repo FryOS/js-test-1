@@ -38,7 +38,7 @@ if (!year) {
     [day, month, year] = dateString.split('-');
 }
 
-if (!year || year.length < 4) {
+if (!year) {
     return null
 }
 
