@@ -97,6 +97,7 @@ function rerender(activeHabbitId) {
   if (!activeHabbit) {
     return;
   }
+  document.location.replace(document.location.pathname + "#" + activeHabbitId);
   rerenderMenu(activeHabbit);
   rerenderHead(activeHabbit);
   rerenderContent(activeHabbit);
@@ -179,15 +180,14 @@ function resetForm(form, fields) {
 function addHabbit(event) {
   event.preventDefault();
 
-  const data = validateAndGetFormData(event.target, [
-    "name",
-    "icon",
-    "target",
-  ]);
+  const data = validateAndGetFormData(event.target, ["name", "icon", "target"]);
   if (!data) {
     return;
   }
-  const maxId = habbits.reduce((acc, habbit) => acc > habbit.id ? acc : habbit.id, 0);
+  const maxId = habbits.reduce(
+    (acc, habbit) => (acc > habbit.id ? acc : habbit.id),
+    0
+  );
   habbits.push({
     id: maxId + 1,
     name: data.name,
@@ -212,5 +212,11 @@ function setIcon(context, icon) {
 /*init*/
 (() => {
   loadDta();
-  rerender(habbits[0].id);
+  const hashId = Number(document.location.hash.replace("#", ""));
+  const urlHabbit = habbits.find((habbit) => habbit.id === hashId);
+  if(urlHabbit) {
+    rerender(urlHabbit.id);
+  }else{
+    rerender(habbits[0].id);
+  }
 })();
