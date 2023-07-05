@@ -1,16 +1,13 @@
-const dateNow = new Date(Date.now());
+const YEAR_IN_MILLISECONDS = 1000 * 60 * 60 * 24 * 30 * 12;
 
 function validateBirthday(birthday) {
+  const dateNow = new Date(Date.now());
   const age = Math.round(
-    (dateNow - new Date(birthday)) / (1000 * 60 * 60 * 24 * 30 * 12)
+    (dateNow - new Date(birthday)) / YEAR_IN_MILLISECONDS
   );
-  if (age <= 18) {
-    return false;
-  } else {
-    true;
-  }
+  return age >= 18;
 }
 
-const date = "2006-12-01";
+const date = "1987-12-01";
 
 console.log(validateBirthday(date));
