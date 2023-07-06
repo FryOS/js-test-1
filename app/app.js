@@ -4,29 +4,8 @@ function random(min, max) {
 function play(dice) {
   const min = 1;
 
-  switch (dice) {
-    
-    case "d4":
-      return random(min, Number(dice.substring(1)));
-
-    case "d6":
-      return random(min, Number(dice.substring(1)));
-
-    case "d8":
-      return random(min, Number(dice.substring(1)));
-
-    case "d10":
-      return random(min, Number(dice.substring(1)));
-
-    case "d12":
-      return random(min, Number(dice.substring(1)));
-    case "d20":
-      return random(min, Number(dice.substring(1)));
-
-    default:
-      console.log("Введите имя кубика в стиле d4 и только четные цифры кубика");
-  }
+  const diceSidesAmount = Number(dice.substring(1));
+  return random(min, diceSidesAmount);
 }
- 
-console.log(play("d5"));
 
+console.log(play("d6"));
