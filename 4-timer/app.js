@@ -1,4 +1,9 @@
 // Функция для получения времени до Нового Года
+
+
+  const countdown = document.getElementById("countdown");
+
+
 function getTimeUntilNewYear() {
   const YEAR_IN_MOUNTHS = 1000 * 60 * 60 * 24 * 30;
   const YEAR_IN_DAYS = 1000 * 60 * 60 * 24;
@@ -20,8 +25,8 @@ function getTimeUntilNewYear() {
 }
 
 function updateCountdown() {
-  const countdown = getTimeUntilNewYear();
-  document.getElementById("countdown").textContent = countdown;
+  const countDownTimer = getTimeUntilNewYear();
+  countdown.textContent = countDownTimer;
 }
 
 // Обновление информации
