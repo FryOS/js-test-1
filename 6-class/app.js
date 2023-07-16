@@ -1,24 +1,24 @@
 class Car {
   #mark;
   #model;
-  #mileage;
+  #_mileage;
 
   constructor(mark, model, mileage) {
     this.#mark = mark;
     this.#model = model;
-    this.#mileage = mileage;
+    this.mileage = mileage;
   }
 
-  set setMileage(mileage) {
-    this.#mileage = mileage;
+  set mileage(mileage) {
+    this.#_mileage = mileage;
   }
 
-  get getMileage() {
-    return this.#mileage;
+  get mileage() {
+    return this.#_mileage;
   }
 
   getInfo() {
-    return `${this.#model} ${this.#mark} ${this.getMileage}`;
+    return `${this.#model} ${this.#mark} ${this.mileage}`;
   }
 }
 
