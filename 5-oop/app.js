@@ -25,7 +25,7 @@ Ork.prototype.constructor = Ork;
 Elf.prototype = Object.create(Character.prototype);
 Elf.prototype.constructor = Elf;
 
-Ork.prototype.toHit = function () {
+Ork.prototype.hit = function () {
   console.log("I hit you!");
 };
 
@@ -34,12 +34,12 @@ Elf.prototype.setChar = function () {
 };
 
 
-const ork = new Ork('ork', 'рыжий', "орчий", true );
+const ork = new Ork('ork', 'рыжий', "орчий", "Топор" );
 ork.sayHello();
-ork.toHit();
+ork.hit();
 console.log(ork);
 
-const elf = new Elf('elf', 'белый', "эльфийский", true );
+const elf = new Elf('elf', 'белый', "эльфийский", "Эльфийский клинок" );
 elf.sayHello();
 elf.setChar();
 console.log(elf);
