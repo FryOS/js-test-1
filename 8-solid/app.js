@@ -1,18 +1,20 @@
 class Billing {
-  amount;
-
-  calculateTotal(amount) {
-    this.amount += amount;
+  constructor(amount) {
+     this.amount = amount;
   }
+
+  calculateTotal() {}
 }
 
 class FixBilling extends Billing {
+  amount = 1;
   calculateTotal() {
     return this.amount;
   }
 }
 
 class HourBilling extends Billing {
+  amount = 2;
   constructor(hourBilling) {
     this.hourBilling = hourBilling;
   }
@@ -24,6 +26,7 @@ class HourBilling extends Billing {
 }
 
 class ItemBilling extends Billing {
+  amount = 3;
   constructor(itemBilling) {
     this.itemBilling = itemBilling;
   }
@@ -32,3 +35,8 @@ class ItemBilling extends Billing {
     return this.amount * itemBilling;
   }
 }
+
+
+
+const a = new FixBilling();
+console.log(a.calculateTotal());
