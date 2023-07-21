@@ -1,5 +1,5 @@
 class Character {
-  constructor(race, name, lang) {
+  constructor(name, lang, race) {
     this.race = race;
     this.name = name;
     this.lang = lang;
@@ -11,33 +11,34 @@ class Character {
 }
 
 class Ork extends Character {
-  constructor(race, name, lang, gun) {
-    super(race, name, lang);
-    this.gun = gun;
+  constructor(name, lang, weapon) {
+    super(name, lang);
+    this.weapon = weapon;
+    this.race = "ork";
   }
 
   hit() {
-    console.log("I hit you!");
+    console.log(`Я зарублю тебя своим ${this.weapon}ом`);
   }
 }
 
 class Elf extends Character {
-  constructor(race, name, lang, char) {
-    super(race, name, lang);
+  constructor(name, lang, char) {
+    super(name, lang);
     this.char = char;
+    this.race = "Elf";
   }
 
   setChar() {
-    console.log("I make char!");
+    console.log(`Я заколдую тебя своим ${this.char}`);
   }
 }
 
-const ork = new Ork("ork", "рыжий", "орчий", "Топор");
+const ork = new Ork("рыжий", "орчий", "Топор");
 ork.sayHello();
 ork.hit();
-console.log(ork);
 
-const elf = new Elf("elf", "белый", "эльфийский", "Эльфийский клинок");
+const elf = new Elf("белый", "эльфийский", "Эльфийский клинок");
 elf.sayHello();
 elf.setChar();
-console.log(elf);
+
