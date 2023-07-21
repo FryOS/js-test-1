@@ -8,9 +8,9 @@ Character.prototype.sayHello = function() {
     console.log(`Привет, меня зовут ${this.name}!`);
   };
 
-const Ork = function (race, name, lang, gun) {
+const Ork = function (race, name, lang, weapon) {
   Character.call(this, race, name, lang);
-  this.gun = gun;
+  this.weapon = weapon;
 };
 
 const Elf = function (race, name, lang,char) {
@@ -26,11 +26,11 @@ Elf.prototype = Object.create(Character.prototype);
 Elf.prototype.constructor = Elf;
 
 Ork.prototype.hit = function () {
-  console.log("I hit you!");
+  console.log(`I hit you! ${this.weapon}`);
 };
 
 Elf.prototype.setChar = function () {
-  console.log("I make char!");
+  console.log(`I make char! ${this.char}`);
 };
 
 
