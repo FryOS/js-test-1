@@ -1,6 +1,6 @@
-
-function getPokemonData(url) {
-  fetch(url)
+function getPokemonData(name) {
+  const url = "https://pokeapi.co/api/v2/pokemon"
+  return fetch(`${url}/${name}`)
     .then((res) => {
       if (!res.ok) {
         throw new Error(`Is error ${res.status}`).message;
@@ -13,11 +13,18 @@ function getPokemonData(url) {
     })
     .then((res) => res.json())
     .then(({ effect_entries }) => {
-      console.log(effect_entries[0].effect);
+      return effect_entries[0].effect;
     })
     .catch((error) => console.log(error));
 }
 
-const pokeUrl = "https://pokeapi.co/api/v2/pokemon/ditto";
+function consoleData(data) {
+  console.log(data);
+}
 
-console.log(getPokemonData(pokeUrl));
+function alertData(data) {
+  alert(data);
+}
+
+getPokemonData("ditto").then(consoleData).catch(console.error);
+getPokemonData("pikachu").then(alertData).catch(console.error);
