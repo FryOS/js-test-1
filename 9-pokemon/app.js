@@ -1,6 +1,8 @@
-function getPokemonData() {
+ const POKEMON_URL_INFO =  "https://pokeapi.co/api/v2/pokemon"
+
+function getPokemonData(callback, pokemonName) {
   const request = new XMLHttpRequest();
-  request.open("GET", "https://pokeapi.co/api/v2/pokemon/ditto");
+  request.open("GET", `${POKEMON_URL_INFO}/${pokemonName}`);
   
   request.send();  
    
@@ -16,9 +18,22 @@ function getPokemonData() {
       const { effect_entries } = JSON.parse(request1.responseText);
    
       const { effect } = effect_entries[1];
-      console.log(effect) ;
+      if(typeof callback == "function"){
+        callback(effect);
+      }
     });
   });
 }
 
-getPokemonData();
+function consoleData(data) {
+  console.log(data);
+}
+
+function alertData(data) {
+	alert(data);
+}
+
+getPokemonData(consoleData, 'ditto', );
+getPokemonData(alertData, 'pikachu', );
+
+
