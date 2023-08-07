@@ -7,8 +7,6 @@ let counter = 0;
 wrapper.addEventListener("click", function (e) {
   for (let i = 0; i < buttons.length; i++) {
     const element = buttons[i];    
-    element.setAttribute("data-id", i);
-
     if (e.target.classList.contains("button")) {
       e.target.textContent = "нажата";
     }
