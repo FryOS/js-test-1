@@ -12,6 +12,7 @@ const dateNow = new Date();
 const currentYear = dateNow.getFullYear();
 const currentMonth = dateNow.getMonth() + 1;
 const newYear = new Date(currentYear + 1, 0, 1);
+const diff = newYear - dateNow;
 
 function declOfNum(n, text_forms) {
   n = Math.abs(n) % 100;
@@ -94,7 +95,10 @@ const IsNewYear =
 
 // Обновление информации
 if (IsNewYear) {
-  clearInterval(interval);
+  setTimeout(() => {
+    clearInterval(interval);
+    alert("stop");
+  }, diff);
 } else {
   setInterval(updateCountdown, 1000);
 }
