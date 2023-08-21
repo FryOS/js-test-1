@@ -84,7 +84,7 @@ function updateCountdown() {
 
 const timeUntilNY = getTimeUntilNewYear();
 
-const interval = setInterval(updateCountdown, 1000);
+const intervalId = setInterval(updateCountdown, 1000);
 
 const IsNewYear =
   timeUntilNY.seconds <= 0 &&
@@ -94,11 +94,20 @@ const IsNewYear =
   timeUntilNY.months <= 0;
 
 // Обновление информации
-if (IsNewYear) {
-  setTimeout(() => {
-    clearInterval(interval);
-    alert("stop");
-  }, diff);
-} else {
-  setInterval(updateCountdown, 1000);
+// if (IsNewYear) {
+//   setTimeout(() => {
+//     clearInterval(intervalId);
+//     alert("stop");
+//   }, diff);
+// } else {
+//   setInterval(updateCountdown, 1000);
+// }
+
+function someFunction() {
+  if (IsNewYear) {
+     clearInterval(intervalId);
+  }
+  else {
+       setInterval(updateCountdown, 1000);
+    }
 }
