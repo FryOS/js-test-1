@@ -14,9 +14,7 @@ wrapper.addEventListener("click", function (e) {
   }
 });
 
-for (let button of buttons) {
-  button.addEventListener('click', function() {
-    counter++;
-    text.textContent = counter;
-  });
-}
+wrapper.addEventListener('click', function() {
+  counter++;
+  text.textContent = counter;
+});
