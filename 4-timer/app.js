@@ -74,7 +74,7 @@ function printTimeUntilNewYear(time) {
   ${time.days} ${declOfNum(time.days, ["день", "дня", "дней"])} 
   ${time.hours} ${declOfNum(time.months, ["час", "часов", "часа"])}
   ${time.minutes} ${declOfNum(time.minutes, ["минута", "минуты", "минут"])} 
-  ${time.seconds} ${declOfNum(time.months, ["секунд", "секунда", "секунды"])}`;
+  ${time.seconds} ${declOfNum(time.months, ["секунда", "секунды", "секунд"])}`;
 }
 
 function updateCountdown() {
@@ -93,16 +93,6 @@ const IsNewYear =
   timeUntilNY.days <= 0 &&
   timeUntilNY.months <= 0;
 
-// Обновление информации
-// if (IsNewYear) {
-//   setTimeout(() => {
-//     clearInterval(intervalId);
-//     alert("stop");
-//   }, diff);
-// } else {
-//   setInterval(updateCountdown, 1000);
-// }
-
 function someFunction() {
   if (IsNewYear) {
      clearInterval(intervalId);
@@ -111,3 +101,4 @@ function someFunction() {
        setInterval(updateCountdown, 1000);
     }
 }
+someFunction();
