@@ -7,12 +7,21 @@ const MINUTES = 1000 * 60;
 const SECONDS = 1000;
 
 const countdown = document.getElementById("countdown");
+const pluralRules = new Intl.PluralRules("ru");
+
+const PLURAL_OPTIONS = {
+  MONTH: ["месяц", "месяца", "месяцев"],
+  DAY: ["день", "дня", "дней"],
+  HOUR: ["час", "часа", "часов"],
+  MINUTE: ["минута", "минуты", "минут"],
+  SECOND: ["секунда", "секунды", "секунд"],
+};
 
 const dateNow = new Date();
 const currentYear = dateNow.getFullYear();
 const currentMonth = dateNow.getMonth() + 1;
 const newYear = new Date(currentYear + 1, 0, 1);
-const diff = newYear - dateNow;
+const newYearInTimestamp = newYear.getTime();
 
 function declOfNum(n, text_forms) {
   n = Math.abs(n) % 100;
@@ -66,39 +75,20 @@ function getTimeUntilNewYear() {
 }
 
 function printTimeUntilNewYear(time) {
-  return `${time.months} ${declOfNum(time.months, [
-    "месяц",
-    "месяца",
-    "месяцев",
-  ])} 
-  ${time.days} ${declOfNum(time.days, ["день", "дня", "дней"])} 
-  ${time.hours} ${declOfNum(time.months, ["час", "часов", "часа"])}
-  ${time.minutes} ${declOfNum(time.minutes, ["минута", "минуты", "минут"])} 
-  ${time.seconds} ${declOfNum(time.months, ["секунда", "секунды", "секунд"])}`;
+  return `${time.months} ${declOfNum(time.months, PLURAL_OPTIONS.MONTH)}
+  ${time.days} ${declOfNum(time.days, PLURAL_OPTIONS.DAY)}
+  ${time.hours} ${declOfNum(time.hours, PLURAL_OPTIONS.HOUR)}
+  ${time.minutes} ${declOfNum(time.minutes, PLURAL_OPTIONS.MINUTE)}
+  ${time.seconds} ${declOfNum(time.seconds, PLURAL_OPTIONS.SECOND)}`;
 }
 
 function updateCountdown() {
   const countDownTimer = printTimeUntilNewYear(getTimeUntilNewYear());
   countdown.textContent = countDownTimer;
-}
 
-const timeUntilNY = getTimeUntilNewYear();
+  if (new Date().getTime() > newYearInTimestamp) {
+    clearInterval(intervalId);
+  }
+}
 
 const intervalId = setInterval(updateCountdown, 1000);
-
-const IsNewYear =
-  timeUntilNY.seconds <= 0 &&
-  timeUntilNY.minutes <= 0 &&
-  timeUntilNY.hours <= 0 &&
-  timeUntilNY.days <= 0 &&
-  timeUntilNY.months <= 0;
-
-function someFunction() {
-  if (IsNewYear) {
-     clearInterval(intervalId);
-  }
-  else {
-       setInterval(updateCountdown, 1000);
-    }
-}
-someFunction();
