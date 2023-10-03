@@ -4,9 +4,9 @@ const text = document.querySelector(".text");
 
 let counter = 0;
 
-wrapper.addEventListener("click", function (e) {  
-    if (e.target.classList.contains("button")) {
-      e.target.textContent = "нажата";
+wrapper.addEventListener("click", function (event) {  
+    if (event.target.classList.contains("button")) {
+      event.target.textContent = "нажата";
     }
     counter++;
     text.textContent = counter;
